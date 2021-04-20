@@ -35,7 +35,7 @@ namespace Rockhoppers.scripts
 
             WorldPosition = parent.WorldPosition;
 
-            textureScale = new Vector2(2);
+            TextureScale = new Vector2(2);
 
             target = parent.target;
 
@@ -55,7 +55,7 @@ namespace Rockhoppers.scripts
 
             if(isExploding)
             {
-                textureScale *= (1 + deltaTime);
+                TextureScale *= (1 + deltaTime);
             }
 
 
@@ -134,7 +134,7 @@ namespace Rockhoppers.scripts
         {
             isExploding = true;
             deleteQueued = true;
-            textureScale *= 1f;
+            TextureScale *= 1f;
             SpritePath = "explosion";
             velocity = target.velocity;
             spriteDepth = 0.2f;

@@ -16,8 +16,8 @@ namespace Rockhoppers.scripts
 
             UIElement UIArrow = new UIElement("arrow");
 
-            UICompass.textureScale *= 1.5f;
-            UIArrow.textureScale *= 1.5f;
+            UICompass.TextureScale *= 1.5f;
+            UIArrow.TextureScale *= 1.5f;
 
 
             UICompass.Add_Child("Compass", UICompass);
@@ -38,8 +38,8 @@ namespace Rockhoppers.scripts
             UIElement UIRadar = new UIElement("radar");
             UIElement UIRadarFrame = new UIElement("radarframe");
 
-            UIRadar.textureScale = new Vector2(10, 10);
-            UIRadarFrame.textureScale = new Vector2(10, 10);
+            UIRadar.TextureScale = new Vector2(10, 10);
+            UIRadarFrame.TextureScale = new Vector2(10, 10);
 
             UIRadar.Add_Child("Frame", UIRadarFrame);
 
@@ -61,7 +61,7 @@ namespace Rockhoppers.scripts
             UIBackGround.spriteDepth += 0.01f;
 
             UIShip.color = Color.Lime;
-            UIShip.textureScale *= 0.35f;
+            UIShip.TextureScale *= 0.35f;
 
             UIplayerVelocity.text = "m/s";
             UIplayerVelocity.color = Color.AntiqueWhite;
@@ -69,9 +69,8 @@ namespace Rockhoppers.scripts
             UItargetVelocity.text = "m/s";
             UItargetVelocity.color = Color.Lime;
 
-            UItargetVelocity.textureScale = Vector2.One/2;
-            UIplayerVelocity.textureScale = Vector2.One * 0.75f;
-            UILight.textureScale *= 0.5f;
+
+            UILight.TextureScale *= 0.5f;
 
 
             UIBackGround.Add_Child("Ship",UIShip);

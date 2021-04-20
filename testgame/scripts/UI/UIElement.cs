@@ -17,21 +17,33 @@ namespace Rockhoppers.scripts
 
         public Vector2 localVector;
         public Vector2 localScale;
-        UIElement parent;
+        UIElement parent = null;
 
 
         public UIElement(string spritePath = null) : base(spritePath)
         {
             child_dict = new Dictionary<string, UIElement>();
-            textureScale = new Vector2(8, 6);
+            TextureScale = new Vector2(8, 6);
             spriteDepth = 0.2f;
             IsOnScreen = true;
+            Set_Local_Position(localVector);
         }
 
-        public void Set_Local_Position()
+        public void Set_Local_Position(Vector2 vector)
         {
             
-            ScreenPosition = parent.ScreenPosition + (parent.textureSize * localVector / 2);      
+            if(this.parent == null)
+            {
+                this.ScreenPosition = new Vector2(Game1.ScreenSize.X * localVector.X, Game1.ScreenSize.Y * localVector.Y) - this.textureSize/2;
+
+                foreach(UIElement child in this.child_dict.Values)
+                {
+                    child.Set_Local_Position(child.localScale);
+                }
+
+                return;
+            }
+            ScreenPosition = parent.ScreenPosition + (parent.textureSize * vector / 2);      
         }
 
         public void Add_Child(string name, UIElement element)
@@ -40,7 +52,7 @@ namespace Rockhoppers.scripts
             element.parent = this;
             element.is_child = true;
             element.spriteDepth = this.spriteDepth - 0.01f;
-            element.Set_Local_Position();
+            element.Set_Local_Position(element.localVector);
         }
 
         public UIElement Remove_Child(UIElement element)
@@ -87,7 +99,7 @@ namespace Rockhoppers.scripts
         {
             if(is_child)
             {
-                Set_Local_Position();
+                Set_Local_Position(localVector);
             }
 
             base.Update(gameTime);

@@ -29,7 +29,7 @@ namespace Rockhoppers.scripts
 
             ScreenPosition = parent.ScreenPosition;
 
-            textureScale = new Vector2(2);
+            TextureScale = new Vector2(2);
         }
 
 

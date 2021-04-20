@@ -17,7 +17,9 @@ namespace Rockhoppers.scripts
         public virtual Texture2D Texture { get => SpritePath != null ? SpriteBucket.Sprites[SpritePath] : null; }
 
         public float spriteDepth;
-        public Vector2 textureScale { get; set; }
+        public Vector2 TextureScale { get => textureScale;  set { textureScale = value; } }
+
+        private Vector2 textureScale;
         public virtual Vector2 textureSize { get => Texture != null ? new Vector2(Texture.Width * textureScale.X, Texture.Height * textureScale.Y) : Vector2.Zero; }
 
 
@@ -58,7 +60,7 @@ namespace Rockhoppers.scripts
 
             while(uniqueID == 0)
             {
-                int num = ran.Next(1, 9999999);
+                int num = ran.Next(1, 999999999);
                 foreach(Entity e in SceneManager.entityList)
                 {
                     if (e.uniqueID == num)
@@ -76,9 +78,9 @@ namespace Rockhoppers.scripts
 
             SpritePath = sprite_path;
             velocity = Vector2.Zero;
-            
 
-            textureScale = new Vector2(4);
+            //textureScale = new Vector2(4);
+          
 
             SceneManager.QueueEntity(this);
 

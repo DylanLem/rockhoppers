@@ -44,6 +44,8 @@ namespace Rockhoppers.scripts
             has_loaded = true;
 
             players.Add(player);
+
+            player.playerRadar.ParentShip = (Ship)ship;
         }
 
 
@@ -54,7 +56,7 @@ namespace Rockhoppers.scripts
 
             if(Input.kbState.IsKeyDown(Keys.G) && coolDownTimer >= coolDown)
             {
-                XMLParser.LoadUIItem("UIweapondata.xml");
+                
 
                 Ship enemy = new Ship("ship2");
                 enemy.WorldPosition = new Vector2(100400,100400);
@@ -111,7 +113,8 @@ namespace Rockhoppers.scripts
 
         public static Entity GetEntity(string _uniqueId)
         {
-            foreach(Entity e in entityList)
+            System.Diagnostics.Debug.WriteLine("ID: " + _uniqueId);
+            foreach (Entity e in entityList)
             {
                 if(e.uniqueID == Convert.ToInt32(_uniqueId))
                 {

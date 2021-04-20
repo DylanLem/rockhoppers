@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hud>
+  <base name="radar" type ="sprite">
+    <sprite>radar</sprite>
+    <vector>1,1</vector>
+    <scaling>8,8</scaling>
+
+    <child name="Frame" type ="sprite">
+      <sprite>radarframe</sprite>
+      <vector>0,0</vector>
+      <scaling>8,8</scaling>
+    </child>
+  </base>
+</hud>

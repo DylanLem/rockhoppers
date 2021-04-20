@@ -29,7 +29,8 @@ namespace Rockhoppers.scripts
             "explosion",
             "buttonswitch",
             "buttonframe",
-            "uilight"
+            "uilight",
+            "uimissile"
         };
 
         public static List<string> spriteFont_paths = new List<string>

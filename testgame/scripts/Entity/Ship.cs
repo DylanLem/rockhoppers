@@ -30,7 +30,8 @@ namespace Rockhoppers.scripts
         public Ship(string spritePath) : base(spritePath)
         {
             spriteDepth = 0.5f;
-            accelerationMagnitude = 25f;   
+            accelerationMagnitude = 25f;
+            TextureScale = new Vector2(4);
         }
 
 

@@ -21,6 +21,7 @@ namespace Rockhoppers.scripts
             is_wrapping = isWrapping;
             spriteDepth = 0.99f;
             degree = 0.5f;
+            TextureScale = new Vector2(4);
         }
 
 
@@ -37,7 +38,7 @@ namespace Rockhoppers.scripts
 
             Vector2 deltaPos = velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            ScreenPosition += (deltaPos / textureScale);
+            ScreenPosition += (deltaPos / TextureScale);
 
 
 
@@ -109,21 +110,21 @@ namespace Rockhoppers.scripts
             if (ScreenPosition.X < 0)
             {
 
-                offset.X = (Game1.ScreenSize.X / textureScale.X) + ScreenPosition.X;
+                offset.X = (Game1.ScreenSize.X / TextureScale.X) + ScreenPosition.X;
             }
             if (ScreenPosition.Y < 0)
             {
-                offset.Y = (Game1.ScreenSize.Y / textureScale.Y) + ScreenPosition.Y;
+                offset.Y = (Game1.ScreenSize.Y / TextureScale.Y) + ScreenPosition.Y;
             }
 
-            if (ScreenPosition.X > Texture.Width - (viewRect.Width / textureScale.X))
+            if (ScreenPosition.X > Texture.Width - (viewRect.Width / TextureScale.X))
             {
-                offset.X = ScreenPosition.X - (Texture.Width - (viewRect.Width / textureScale.X));
+                offset.X = ScreenPosition.X - (Texture.Width - (viewRect.Width / TextureScale.X));
             }
 
-            if (ScreenPosition.Y > Texture.Height - (viewRect.Height / textureScale.Y))
+            if (ScreenPosition.Y > Texture.Height - (viewRect.Height / TextureScale.Y))
             {
-                offset.Y = ScreenPosition.Y - (Texture.Height - viewRect.Height / textureScale.Y);
+                offset.Y = ScreenPosition.Y - (Texture.Height - viewRect.Height / TextureScale.Y);
             }
 
 
@@ -137,24 +138,24 @@ namespace Rockhoppers.scripts
 
 
             //First we shall determine the dimensions and texture positions of our fair squares (rectangles)
-            Rectangle aRect = new Rectangle((int)ScreenPosition.X, (int)ScreenPosition.Y, (int)((viewRect.Width / textureScale.X) - (int)offset.X), (int)((viewRect.Height / textureScale.Y) - (int)offset.Y));
+            Rectangle aRect = new Rectangle((int)ScreenPosition.X, (int)ScreenPosition.Y, (int)((viewRect.Width / TextureScale.X) - (int)offset.X), (int)((viewRect.Height / TextureScale.Y) - (int)offset.Y));
             rects.Add(aRect);
 
 
 
-            Rectangle bRect = new Rectangle(0, (int)ScreenPosition.Y, (int)offset.X, (int)((viewRect.Height / textureScale.Y) - (int)offset.Y));
+            Rectangle bRect = new Rectangle(0, (int)ScreenPosition.Y, (int)offset.X, (int)((viewRect.Height / TextureScale.Y) - (int)offset.Y));
             if (bRect.Width * bRect.Height != 0)
             {
                 rects.Add(bRect);
-                rect_screen_positions.Add(new Vector2((int)Game1.ScreenSize.X - (int)((int)offset.X * textureScale.X), 0));
+                rect_screen_positions.Add(new Vector2((int)Game1.ScreenSize.X - (int)((int)offset.X * TextureScale.X), 0));
             }
 
 
-            Rectangle cRect = new Rectangle((int)ScreenPosition.X, 0, (int)((viewRect.Width / textureScale.X) - (int)offset.X), (int)offset.Y);
+            Rectangle cRect = new Rectangle((int)ScreenPosition.X, 0, (int)((viewRect.Width / TextureScale.X) - (int)offset.X), (int)offset.Y);
             if (cRect.Width * cRect.Height != 0)
             {
                 rects.Add(cRect);
-                rect_screen_positions.Add(new Vector2(0, (int)Game1.ScreenSize.Y - (int)((int)offset.Y * textureScale.Y)));
+                rect_screen_positions.Add(new Vector2(0, (int)Game1.ScreenSize.Y - (int)((int)offset.Y * TextureScale.Y)));
             }
 
 
@@ -162,14 +163,14 @@ namespace Rockhoppers.scripts
             if (dRect.Width * dRect.Height != 0)
             {
                 rects.Add(dRect);
-                rect_screen_positions.Add(new Vector2((int)Game1.ScreenSize.X - (int)((int)offset.X * textureScale.X), ((int)Game1.ScreenSize.Y - (int)((int)offset.Y * textureScale.Y))));
+                rect_screen_positions.Add(new Vector2((int)Game1.ScreenSize.X - (int)((int)offset.X * TextureScale.X), ((int)Game1.ScreenSize.Y - (int)((int)offset.Y * TextureScale.Y))));
             }
 
 
 
             for (int i = 0; i < rects.Count; i++)
             {
-                spriteBatch.Draw(Texture, rect_screen_positions[i], rects[i], Color.White, orientation, Vector2.Zero, textureScale, SpriteEffects.None, 0.9f);
+                spriteBatch.Draw(Texture, rect_screen_positions[i], rects[i], Color.White, orientation, Vector2.Zero, TextureScale, SpriteEffects.None, 0.9f);
             }
 
             return;
