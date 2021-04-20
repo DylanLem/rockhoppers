@@ -3,12 +3,14 @@
 <weapons>
 
 
-  <missile>
-    <sprite>UIMissile</sprite>
-    <child type ="Text">
-      <name>UITextCount</name>
-      <vector>0.28,-0.08</vector>
-    </child>
+  <missile type = "base">
+    <sprite>uimissile</sprite>
+      
+      <child type ="Text">
+        <name>UITextCount</name>
+        <vector>0.28,-0.08</vector>
+        <scaling>1.0,1.0</scaling>
+      </child>
     
     
   </missile>

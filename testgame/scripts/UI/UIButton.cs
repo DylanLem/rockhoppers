@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace testgame.scripts
+namespace Rockhoppers.scripts
 {
     class UIButton : UIElement
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using testgame.scripts;
+using Rockhoppers.scripts;
 
-namespace testgame
+namespace Rockhoppers
 {
     public class Game1 : Game
     { 

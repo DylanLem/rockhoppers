@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace testgame.scripts
+namespace Rockhoppers.scripts
 {
     public class Bullet : Entity
     {

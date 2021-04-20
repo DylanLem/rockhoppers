@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace testgame.scripts
+namespace Rockhoppers.scripts
 {
     public abstract class Entity
     {

@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace testgame.scripts
+namespace Rockhoppers.scripts
 {
     static class SceneManager
     {
@@ -20,7 +20,7 @@ namespace testgame.scripts
         public static Vector2 camPos { get => players[0].playerEntity.WorldPosition; }
 
 
-        public static float coolDown = 0.05f;
+        public static float coolDown = 0.25f;
         public static float coolDownTimer = 0.0f;
 
         public static bool has_loaded;
@@ -54,6 +54,8 @@ namespace testgame.scripts
 
             if(Input.kbState.IsKeyDown(Keys.G) && coolDownTimer >= coolDown)
             {
+                XMLParser.LoadUIItem("UIweapondata.xml");
+
                 Ship enemy = new Ship("ship2");
                 enemy.WorldPosition = new Vector2(100400,100400);
                 enemy.WorldPosition += new Vector2(rnd.Next(-1000, 1000), rnd.Next(-1000, 1000));

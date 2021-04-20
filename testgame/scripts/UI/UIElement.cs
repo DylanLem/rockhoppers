@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace testgame.scripts
+namespace Rockhoppers.scripts
 {
     public class UIElement : Entity
     {

@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 //using Microsoft.Xna.Framework.Graphics.SpriteFont;
 
-namespace testgame.scripts
+namespace Rockhoppers.scripts
 {
     public static class SpriteBucket
     {
