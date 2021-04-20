@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "testgame": {
+      "commandName": "Project"
+    },
+    "Rockhoppers": {
+      "commandName": "Project"
+    }
+  }
+}
