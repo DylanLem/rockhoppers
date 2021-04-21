@@ -68,7 +68,7 @@ namespace Rockhoppers.scripts
             }
 
             Vector2 accelerationVector = Vector2.Normalize(targetLine);
-            System.Diagnostics.Debug.WriteLine(accelerationVector);
+            
 
 
             if (escapee.GetType() == typeof(Ship))

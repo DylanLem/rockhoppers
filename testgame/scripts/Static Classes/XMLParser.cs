@@ -19,14 +19,11 @@ namespace Rockhoppers.scripts
 
             while(! reader.EOF)
             {
-               if(reader.Name != "base")
-                    reader.Read();
-
+                reader.Read();
                 if (reader.GetAttribute("name") == objectName)
                     break;
 
-                reader.Read();
-                reader.MoveToElement();
+               
             }
             
 
@@ -34,27 +31,38 @@ namespace Rockhoppers.scripts
 
             while (! reader.EOF)
             {
-                if(reader.IsStartElement())
-                {
+                System.Diagnostics.Debug.WriteLine("object to build: " + objectName);
+                if(reader.Name == "base")
+                    System.Diagnostics.Debug.WriteLine("attribute name: " + reader.GetAttribute(0));
+                System.Diagnostics.Debug.WriteLine("node name: " + reader.Name);
+                
                     if (reader.Name == "base")
                     {
+                        System.Diagnostics.Debug.WriteLine("building " + reader.Name);                   
                         UIbase = Build_Child(reader);
                     }
 
 
-                    if (reader.Name == "child")
+                    if (reader.Name == "child" && reader.IsStartElement())
                     {
                         UIbase.Add_Child(reader.GetAttribute("name"), Build_Child(reader));
                     }
-                }    
+              
                 
 
                 reader.Read();
                 reader.MoveToElement();
+                if (reader.Name == "base")
+                {
+                    System.Diagnostics.Debug.WriteLine("returning " + objectName);
+                    return UIbase;
+                    break;
+                }
+                    
 
             }
 
-            System.Diagnostics.Debug.WriteLine(UIbase.SpritePath);
+           
             return UIbase;
         }
 

@@ -29,9 +29,6 @@ namespace Rockhoppers.scripts
                 return;
 
 
-            System.Diagnostics.Debug.WriteLine("hey bitch");
-
-
             foreach (Ship bogey in ParentShip.trackedShips)
             {
                 if (display.child_dict.ContainsKey(Convert.ToString(bogey.uniqueID)))
@@ -57,7 +54,7 @@ namespace Rockhoppers.scripts
 
 
 
-                System.Diagnostics.Debug.WriteLine(localPos);
+               
 
 
                 UIBlip.localVector = -localPos;

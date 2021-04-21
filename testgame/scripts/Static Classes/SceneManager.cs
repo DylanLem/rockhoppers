@@ -37,7 +37,7 @@ namespace Rockhoppers.scripts
             ship.WorldPosition = new Vector2(100000f, 100000f);
 
             player.Set_Entity(ship);
-
+            player.Create_UI();
             Background background = new Background(true, "stars");
             background.parent_player = player;
 
@@ -113,7 +113,7 @@ namespace Rockhoppers.scripts
 
         public static Entity GetEntity(string _uniqueId)
         {
-            System.Diagnostics.Debug.WriteLine("ID: " + _uniqueId);
+            System.Diagnostics.Debug.WriteLine(_uniqueId);
             foreach (Entity e in entityList)
             {
                 if(e.uniqueID == Convert.ToInt32(_uniqueId))

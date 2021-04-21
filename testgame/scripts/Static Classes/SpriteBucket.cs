@@ -13,7 +13,7 @@ namespace Rockhoppers.scripts
         public static Dictionary<string,Texture2D> Sprites = new Dictionary<string, Texture2D>();
         public static List<string> sprite_paths = new List<string>
         {
-            "ship",
+            "ship",                     "uitracker",
             "ship2",
             "bullet",
             "cursor",
