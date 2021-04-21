@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 //using Microsoft.Xna.Framework.Graphics.SpriteFont;
 
-namespace testgame.scripts
+namespace Rockhoppers.scripts
 {
     public static class SpriteBucket
     {
@@ -13,7 +13,7 @@ namespace testgame.scripts
         public static Dictionary<string,Texture2D> Sprites = new Dictionary<string, Texture2D>();
         public static List<string> sprite_paths = new List<string>
         {
-            "ship",
+            "ship",                     "uitracker",
             "ship2",
             "bullet",
             "cursor",
@@ -29,7 +29,8 @@ namespace testgame.scripts
             "explosion",
             "buttonswitch",
             "buttonframe",
-            "uilight"
+            "uilight",
+            "uimissile"
         };
 
         public static List<string> spriteFont_paths = new List<string>

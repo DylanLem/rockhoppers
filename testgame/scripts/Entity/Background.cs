@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
-namespace testgame.scripts
+namespace Rockhoppers.scripts
 {
     public class Background : Entity
     {
-        private bool is_wrapping;   
+        private bool is_wrapping;
 
         Rectangle viewRect { get => new Rectangle((int)ScreenPosition.X, (int)ScreenPosition.Y, (int)Game1.ScreenSize.X, (int)Game1.ScreenSize.Y); }
 
@@ -23,12 +21,13 @@ namespace testgame.scripts
             is_wrapping = isWrapping;
             spriteDepth = 0.99f;
             degree = 0.5f;
+            TextureScale = new Vector2(4);
         }
 
 
         public void ApplyParallax()
         {
-            
+
             velocity = parent_player.playerEntity.velocity * degree;
         }
 
@@ -39,23 +38,23 @@ namespace testgame.scripts
 
             Vector2 deltaPos = velocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            ScreenPosition += (deltaPos/ textureScale);
+            ScreenPosition += (deltaPos / TextureScale);
 
 
-            
-            if (ScreenPosition.X <  0)
+
+            if (ScreenPosition.X < 0)
             {
                 ScreenPosition = new Vector2(Texture.Width, ScreenPosition.Y);
             }
-            if (ScreenPosition.X  > Texture.Width)
+            if (ScreenPosition.X > Texture.Width)
             {
                 ScreenPosition = new Vector2(0, ScreenPosition.Y);
             }
-            if (ScreenPosition.Y  < 0)
+            if (ScreenPosition.Y < 0)
             {
                 ScreenPosition = new Vector2(ScreenPosition.X, Texture.Height);
             }
-            if (ScreenPosition.Y > Texture.Height) 
+            if (ScreenPosition.Y > Texture.Height)
             {
                 ScreenPosition = new Vector2(ScreenPosition.X, 0);
             }
@@ -110,22 +109,22 @@ namespace testgame.scripts
             //THIS LETS ME AVOID MAKING MANY MANY EDGE CASES :)
             if (ScreenPosition.X < 0)
             {
-                
-                offset.X = (Game1.ScreenSize.X / textureScale.X) + ScreenPosition.X;
+
+                offset.X = (Game1.ScreenSize.X / TextureScale.X) + ScreenPosition.X;
             }
             if (ScreenPosition.Y < 0)
             {
-                offset.Y = (Game1.ScreenSize.Y / textureScale.Y) + ScreenPosition.Y;
+                offset.Y = (Game1.ScreenSize.Y / TextureScale.Y) + ScreenPosition.Y;
             }
 
-            if (ScreenPosition.X > Texture.Width - (viewRect.Width/textureScale.X))
+            if (ScreenPosition.X > Texture.Width - (viewRect.Width / TextureScale.X))
             {
-                offset.X = ScreenPosition.X - (Texture.Width - (viewRect.Width / textureScale.X));
+                offset.X = ScreenPosition.X - (Texture.Width - (viewRect.Width / TextureScale.X));
             }
 
-            if (ScreenPosition.Y >  Texture.Height - (viewRect.Height / textureScale.Y))
+            if (ScreenPosition.Y > Texture.Height - (viewRect.Height / TextureScale.Y))
             {
-                offset.Y = ScreenPosition.Y - (Texture.Height - viewRect.Height / textureScale.Y);
+                offset.Y = ScreenPosition.Y - (Texture.Height - viewRect.Height / TextureScale.Y);
             }
 
 
@@ -139,24 +138,24 @@ namespace testgame.scripts
 
 
             //First we shall determine the dimensions and texture positions of our fair squares (rectangles)
-            Rectangle aRect = new Rectangle((int)ScreenPosition.X, (int)ScreenPosition.Y, (int)((viewRect.Width/textureScale.X) - (int)offset.X), (int)((viewRect.Height / textureScale.Y) - (int)offset.Y));
+            Rectangle aRect = new Rectangle((int)ScreenPosition.X, (int)ScreenPosition.Y, (int)((viewRect.Width / TextureScale.X) - (int)offset.X), (int)((viewRect.Height / TextureScale.Y) - (int)offset.Y));
             rects.Add(aRect);
 
-            
 
-            Rectangle bRect = new Rectangle(0, (int)ScreenPosition.Y, (int)offset.X , (int)((viewRect.Height / textureScale.Y) - (int)offset.Y));
+
+            Rectangle bRect = new Rectangle(0, (int)ScreenPosition.Y, (int)offset.X, (int)((viewRect.Height / TextureScale.Y) - (int)offset.Y));
             if (bRect.Width * bRect.Height != 0)
             {
                 rects.Add(bRect);
-                rect_screen_positions.Add(new Vector2((int)Game1.ScreenSize.X - (int)((int)offset.X * textureScale.X),0));
+                rect_screen_positions.Add(new Vector2((int)Game1.ScreenSize.X - (int)((int)offset.X * TextureScale.X), 0));
             }
 
 
-            Rectangle cRect = new Rectangle((int)ScreenPosition.X, 0, (int)((viewRect.Width / textureScale.X) - (int)offset.X), (int)offset.Y);
+            Rectangle cRect = new Rectangle((int)ScreenPosition.X, 0, (int)((viewRect.Width / TextureScale.X) - (int)offset.X), (int)offset.Y);
             if (cRect.Width * cRect.Height != 0)
             {
                 rects.Add(cRect);
-                rect_screen_positions.Add(new Vector2(0, (int)Game1.ScreenSize.Y - (int)((int)offset.Y * textureScale.Y)));
+                rect_screen_positions.Add(new Vector2(0, (int)Game1.ScreenSize.Y - (int)((int)offset.Y * TextureScale.Y)));
             }
 
 
@@ -164,21 +163,21 @@ namespace testgame.scripts
             if (dRect.Width * dRect.Height != 0)
             {
                 rects.Add(dRect);
-                rect_screen_positions.Add(new Vector2((int)Game1.ScreenSize.X - (int)((int)offset.X * textureScale.X), ((int)Game1.ScreenSize.Y - (int)((int)offset.Y * textureScale.Y))));
+                rect_screen_positions.Add(new Vector2((int)Game1.ScreenSize.X - (int)((int)offset.X * TextureScale.X), ((int)Game1.ScreenSize.Y - (int)((int)offset.Y * TextureScale.Y))));
             }
 
 
 
-            for(int i = 0; i < rects.Count; i++)
+            for (int i = 0; i < rects.Count; i++)
             {
-                spriteBatch.Draw(Texture, rect_screen_positions[i], rects[i], Color.White, orientation, Vector2.Zero, textureScale, SpriteEffects.None, 0.9f);
+                spriteBatch.Draw(Texture, rect_screen_positions[i], rects[i], Color.White, orientation, Vector2.Zero, TextureScale, SpriteEffects.None, 0.9f);
             }
 
             return;
 
         }
 
-        
+
 
     }
 

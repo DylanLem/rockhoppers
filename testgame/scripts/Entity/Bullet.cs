@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace testgame.scripts
+namespace Rockhoppers.scripts
 {
     public class Bullet : Entity
     {
@@ -29,7 +29,7 @@ namespace testgame.scripts
 
             ScreenPosition = parent.ScreenPosition;
 
-            textureScale = new Vector2(2);
+            TextureScale = new Vector2(2);
         }
 
 

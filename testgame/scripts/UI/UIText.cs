@@ -4,11 +4,11 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace testgame.scripts
+namespace Rockhoppers.scripts
 {
     class UIText : UIElement
     {
-        public string text;
+        public string text = "";
 
         public SpriteFont Font { get => SpritePath != null ? SpriteBucket.spriteFonts[SpritePath] : null; }
         public override Texture2D Texture {get => null;}
@@ -31,7 +31,7 @@ namespace testgame.scripts
             {
                 return;
             }
-            spriteBatch.DrawString(Font,text, ScreenPosition, color, orientation, Dimensions/2, textureScale, 0, spriteDepth);
+            spriteBatch.DrawString(Font,text, ScreenPosition, color, orientation, Dimensions/2, TextureScale, 0, spriteDepth);
         }
         
 

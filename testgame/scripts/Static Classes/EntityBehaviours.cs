@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace testgame.scripts
+namespace Rockhoppers.scripts
 {
     public static class EntityBehaviours
     {
@@ -68,7 +68,7 @@ namespace testgame.scripts
             }
 
             Vector2 accelerationVector = Vector2.Normalize(targetLine);
-            System.Diagnostics.Debug.WriteLine(accelerationVector);
+            
 
 
             if (escapee.GetType() == typeof(Ship))

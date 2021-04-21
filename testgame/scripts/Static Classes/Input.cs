@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using System.Text;
 
-namespace testgame.scripts
+namespace Rockhoppers.scripts
 {
     static class Input
     {

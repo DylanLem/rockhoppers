@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace testgame
+namespace Rockhoppers
 {
     public static class Program
     {

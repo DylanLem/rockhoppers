@@ -5,11 +5,11 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace testgame.scripts
+namespace Rockhoppers.scripts
 {
     public class Ship : Entity
     {
-        private int targetIndex = 0;
+        public int targetIndex = 0;
 
         //Delay in seconds
         public float shotDelay = 5f;
@@ -30,7 +30,8 @@ namespace testgame.scripts
         public Ship(string spritePath) : base(spritePath)
         {
             spriteDepth = 0.5f;
-            accelerationMagnitude = 25f;   
+            accelerationMagnitude = 25f;
+            TextureScale = new Vector2(4);
         }
 
 
@@ -109,17 +110,7 @@ namespace testgame.scripts
             Vector2 moveDirection = Input.GetMovementDirection();
 
 
-            if(Input.kbState.IsKeyDown(Keys.Tab) && trackedShips.Count > 0 && Input.TryInput(Keys.Tab))
-            {
-
-                if (targetIndex < trackedShips.Count - 1)
-                    targetIndex += 1;
-                else
-                    targetIndex = 0;
-                TargetShip(trackedShips[targetIndex]);
-
-                
-            }
+            
 
             if (Input.kbState.IsKeyDown(Keys.M) && target != null && shootTimer >= shotDelay)
             {
