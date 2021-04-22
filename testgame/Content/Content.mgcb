@@ -61,6 +61,18 @@
 /processorParam:TextureFormat=Color
 /build:../../../../../Pictures/buttonswitch.png;buttonswitch.png
 
+#begin ../../../../../Pictures/chassis_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../../../../Pictures/chassis_1.png;chassis_1.png
+
 #begin ../../../../../Pictures/compass.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -96,6 +108,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:../../../../../Pictures/explosion.png;explosion.png
+
+#begin ../../../../../Pictures/helpscreen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../../../../Pictures/helpscreen.png;helpscreen.png
 
 #begin ../../../../../Pictures/missile.png
 /importer:TextureImporter
@@ -144,6 +168,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:../../../../../Pictures/radarframe.png;radarframe.png
+
+#begin ../../../../../Pictures/rocketlauncher.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../../../../Pictures/rocketlauncher.png;rocketlauncher.png
 
 #begin ../../../../../Pictures/ship.png
 /importer:TextureImporter

@@ -33,12 +33,7 @@ namespace Rockhoppers.scripts
         }
 
 
-        private void Set_Inertial_Velocity(Vector2 velocity)
-        {
-            Vector2 v = new Vector2(velocity.X,velocity.Y);
 
-            inertialVelocity = v;
-        }
         public override void Update(GameTime gameTime)
         {
             Vector2 deltaPos = realVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;

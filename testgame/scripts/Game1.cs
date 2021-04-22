@@ -81,20 +81,10 @@ namespace Rockhoppers
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+
 
             SceneManager.UpdateScene(gameTime);
-
-           
-            
-           
-
-            foreach(Entity e in SceneManager.entityList)
-            {
-                //System.Diagnostics.Debug.WriteLine(e.SpritePath);
-            }
-
-            
+          
             base.Update(gameTime);
         }
 

@@ -14,9 +14,9 @@ namespace Rockhoppers.scripts
         public static List<string> sprite_paths = new List<string>
         {
             "ship",                     "uitracker",
-            "ship2",
-            "bullet",
-            "cursor",
+            "ship2",                    "helpscreen",
+            "bullet",                   "chassis_1",
+            "cursor",                   "rocketlauncher",
             "stars",
             "UIsaffronpurple",
             "arrow",

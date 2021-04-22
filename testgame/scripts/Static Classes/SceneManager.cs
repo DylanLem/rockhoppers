@@ -8,6 +8,7 @@ namespace Rockhoppers.scripts
 {
     static class SceneManager
     {
+        public static UIElement helpScreen;
 
         public static List<Entity> entityList = new List<Entity>();
 
@@ -20,7 +21,7 @@ namespace Rockhoppers.scripts
         public static Vector2 camPos { get => players[0].playerEntity.WorldPosition; }
 
 
-        public static float coolDown = 0.25f;
+        public static float coolDown = 0.105f;
         public static float coolDownTimer = 0.0f;
 
         public static bool has_loaded;
@@ -29,39 +30,73 @@ namespace Rockhoppers.scripts
 
         public static void InitializeScene()
         {
+            helpScreen = new UIElement("helpscreen");
+            helpScreen.TextureScale = Vector2.One;
+            helpScreen.ScreenPosition = Game1.ScreenSize - helpScreen.textureSize;
+            helpScreen.Hide(true);
+
             Player player = new Player();
-            Entity ship = new Ship("ship");
-
-
-            ship.ScreenPosition = Game1.ScreenSize / 2f ;
-            ship.WorldPosition = new Vector2(100000f, 100000f);
+            Entity ship = new Ship("chassis_1")
+            {
+                ScreenPosition = Game1.ScreenSize / 2f,
+                WorldPosition = new Vector2(100000f, 100000f)
+            };
 
             player.Set_Entity(ship);
             player.Create_UI();
-            Background background = new Background(true, "stars");
-            background.parent_player = player;
+
+            Background background = new Background("stars")
+            {
+                parent_player = player
+            };
 
             has_loaded = true;
 
             players.Add(player);
 
             player.playerRadar.ParentShip = (Ship)ship;
+
+            RocketLauncher rocker = new RocketLauncher();
+            rocker.WorldPosition = player.playerEntity.WorldPosition + new Vector2(100);
+            rocker.ParentShip = null;
+
+            UIText help = new UIText("fontMain");
+            help.ScreenPosition = Game1.ScreenSize / 2;
+            help.text = "PRESS H FOR HELP :)";
+            help.TextureScale *= 0.5f;
+            help.color = Color.SlateGray;
+            help.deleteQueued = true;
+            help.deleteDelay = 4f;
         }
 
 
         public static void UpdateScene(GameTime gameTime)
         {
+          
+
             coolDownTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             Random rnd = new Random();
 
             if(Input.kbState.IsKeyDown(Keys.G) && coolDownTimer >= coolDown)
             {
-                
 
-                Ship enemy = new Ship("ship2");
-                enemy.WorldPosition = new Vector2(100400,100400);
-                enemy.WorldPosition += new Vector2(rnd.Next(-1000, 1000), rnd.Next(-1000, 1000));
+
+                Ship enemy = new Ship("ship2")
+                {
+                    WorldPosition = players[0].playerEntity.WorldPosition + new Vector2(rnd.Next(-10000, 10000), rnd.Next(-10000, 10000))
+                    
+                    
+                };
+                enemy.spriteDepth += rnd.Next(-100,100) / 1000;
+
+
                 coolDownTimer = 0;
+            }
+
+            if (Input.kbState.IsKeyDown(Keys.H) && Input.TryInput(Keys.H))
+            {
+                
+                helpScreen.Hide(! helpScreen.isHidden);
             }
 
             foreach(Player player in players)
@@ -113,7 +148,6 @@ namespace Rockhoppers.scripts
 
         public static Entity GetEntity(string _uniqueId)
         {
-            System.Diagnostics.Debug.WriteLine(_uniqueId);
             foreach (Entity e in entityList)
             {
                 if(e.uniqueID == Convert.ToInt32(_uniqueId))

@@ -11,9 +11,9 @@ namespace Rockhoppers.scripts
         public Dictionary<string, UIElement> child_dict;
 
         bool is_child;
-        bool is_localScale;
 
         public bool IsTemp = false;
+        public bool isHidden = false;
 
         public Vector2 localVector;
         public Vector2 localScale;
@@ -24,7 +24,7 @@ namespace Rockhoppers.scripts
         {
             child_dict = new Dictionary<string, UIElement>();
             TextureScale = new Vector2(8, 6);
-            spriteDepth = 0.2f;
+            spriteDepth = 0.1f;
             IsOnScreen = true;
             Set_Local_Position(localVector);
         }
@@ -118,15 +118,26 @@ namespace Rockhoppers.scripts
             }
         }
 
-        public void Hide()
+        public void Hide(bool tf)
         {
-            color.A = 128;
+            isHidden = tf;
+            IsOnScreen = ! tf;
+
+            if(tf)
+            {
+                color.A = 0;
+            }
+            else
+            {
+                color.A = 255;
+            }
+            
 
             if(child_dict.Count > 0)
             {
                 foreach(UIElement child in child_dict.Values)
                 {
-                    child.Hide();
+                    child.Hide(tf);
                 }
             }
         }

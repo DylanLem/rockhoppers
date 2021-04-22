@@ -5,15 +5,14 @@ using System.Text;
 
 namespace Rockhoppers.scripts
 {
-    public class Radar : Entity
+    public class Radar : Component
     {
 
-        public Ship ParentShip { get; set; }
-        UIElement uiDisplay { get; }
 
         public Radar(string xmlElement=null) : base(null)
         {
             uiDisplay = XMLParser.LoadUIItem("UIhuditems",xmlElement);
+            uiDisplay.child_dict["Frame"].spriteDepth -= 0.02f;
         }
 
 
@@ -43,42 +42,50 @@ namespace Rockhoppers.scripts
                     }
                     continue;
                 }
+                else
+                {
+                    UIElement UIBlip = new UIElement("radarblip")
+                    {
+                        TextureScale = new Vector2(1f, 1f)
+                    };
 
-                UIElement UIBlip = new UIElement("radarblip");
+                    UIBlip.spriteDepth -= 0.08f;
+                    Vector2 localPos = (bogey.WorldPosition - ParentShip.WorldPosition) / (ParentShip.radarRange * 10000);
 
+                    UIBlip.localVector = localPos;
 
-                UIBlip.TextureScale = new Vector2(1f, 1f);
-                UIBlip.spriteDepth -= 0.005f;
+                    display.Add_Child(Convert.ToString(bogey.uniqueID), UIBlip);
+                }
+                
 
-                Vector2 localPos = Vector2.Normalize(bogey.WorldPosition - ParentShip.WorldPosition);
-
-
-
-               
-
-
-                UIBlip.localVector = -localPos;
-
-                display.Add_Child(Convert.ToString(bogey.uniqueID), UIBlip);
+                
             }
 
             foreach (KeyValuePair<string, UIElement> blip in display.child_dict)
             {
+
+
                 if (blip.Key.Contains("Frame"))
+                {
                     continue;
+                }
+                    
+                if (SceneManager.GetEntity(blip.Key) == null)
+                    display.Remove_Child(blip.Key);
                 else
                 {
 
-                    if (Math.Abs(blip.Value.localVector.X) > 1 || Math.Abs(blip.Value.localVector.Y) > 1)
+                    if (Math.Abs(blip.Value.localVector.X) >= 0.90 || Math.Abs(blip.Value.localVector.Y) > .90)
                     {
                         uiDisplay.Remove_Child(blip.Value);
+                        blip.Value.Delete();
                     }
                     else
                     {
                         Ship bogey = SceneManager.GetEntity(blip.Key) as Ship;
 
-                        Vector2 localPos = (ParentShip.WorldPosition - bogey.WorldPosition) / (ParentShip.radarRange * 10000);
-                        blip.Value.localVector = -localPos;
+                        Vector2 localPos = 0.9f * ( bogey.WorldPosition - ParentShip.WorldPosition ) / (ParentShip.radarRange * 10000);
+                        blip.Value.localVector = localPos;
                     }
                 }
             }

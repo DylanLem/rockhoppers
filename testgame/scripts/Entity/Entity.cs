@@ -12,7 +12,7 @@ namespace Rockhoppers.scripts
 
         public int uniqueID = 0;
 
-
+        public string Name { get; set; }
         public string SpritePath { get; set; }
         public virtual Texture2D Texture { get => SpritePath != null ? SpriteBucket.Sprites[SpritePath] : null; }
 
@@ -58,6 +58,8 @@ namespace Rockhoppers.scripts
         {
             Random ran = new Random();
 
+            
+
             while(uniqueID == 0)
             {
                 int num = ran.Next(1, 999999999);
@@ -84,7 +86,7 @@ namespace Rockhoppers.scripts
 
             SceneManager.QueueEntity(this);
 
-            IsOnScreen = false;
+            IsOnScreen = true;
             IsPlayer = false;
             deleteQueued = false;
 
@@ -112,8 +114,8 @@ namespace Rockhoppers.scripts
         public virtual void Update(GameTime gameTime)
         {
 
-
-            if(deleteQueued)
+            this.hitbubble = new Circle(textureSize.X/ 2);
+            if (deleteQueued)
             {
                 deleteTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -128,7 +130,21 @@ namespace Rockhoppers.scripts
                 Update_As_Player(gameTime);
             }
 
+            if (this.IsPlayer != true && (GetType() != typeof(Background) && GetType() != typeof(UIElement)) && GetType() != typeof(UIText))
+            {
 
+                if (Math.Abs(WorldPosition.X - SceneManager.camPos.X) < Game1.ScreenSize.X / 2 && Math.Abs(WorldPosition.Y - SceneManager.camPos.Y) < Game1.ScreenSize.X / 2)
+                {
+                    IsOnScreen = true;
+                    ScreenPosition = WorldPosition - SceneManager.camPos + Game1.ScreenSize / 2;
+                }
+                else
+                {
+                    ScreenPosition = Game1.ScreenSize * 5;
+                    IsOnScreen = false;
+                }
+            }
+           
 
         }
 

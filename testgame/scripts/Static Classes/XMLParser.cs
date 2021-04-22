@@ -31,14 +31,9 @@ namespace Rockhoppers.scripts
 
             while (! reader.EOF)
             {
-                System.Diagnostics.Debug.WriteLine("object to build: " + objectName);
-                if(reader.Name == "base")
-                    System.Diagnostics.Debug.WriteLine("attribute name: " + reader.GetAttribute(0));
-                System.Diagnostics.Debug.WriteLine("node name: " + reader.Name);
-                
+
                     if (reader.Name == "base")
-                    {
-                        System.Diagnostics.Debug.WriteLine("building " + reader.Name);                   
+                    {               
                         UIbase = Build_Child(reader);
                     }
 
@@ -54,9 +49,8 @@ namespace Rockhoppers.scripts
                 reader.MoveToElement();
                 if (reader.Name == "base")
                 {
-                    System.Diagnostics.Debug.WriteLine("returning " + objectName);
                     return UIbase;
-                    break;
+
                 }
                     
 
