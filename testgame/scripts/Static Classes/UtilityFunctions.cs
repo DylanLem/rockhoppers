@@ -41,9 +41,11 @@ namespace Rockhoppers.scripts
 
         public static bool CheckCollision(Entity e1, Entity e2)
         {
-            if (Vector2.Distance(e1.WorldPosition,e2.WorldPosition) < e1.hitbubble.Radius + e2.hitbubble.Radius)
+            if (Vector2.Distance(e1.WorldPosition, e2.WorldPosition) < e1.hitbubble.Radius + e2.hitbubble.Radius)
+            {
                 return true;
-            
+            }
+
             else
                 return false;
         }

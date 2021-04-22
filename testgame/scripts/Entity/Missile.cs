@@ -5,39 +5,51 @@ using System.Text;
 
 namespace Rockhoppers.scripts
 {
-    class Missile : Entity
+    class Missile : Entity, IDamaging
     {
 
-        public bool isExploding = false;
+        public int Damage { get => damage; set => damage = value; }
 
+        private int damage; 
+
+        public bool isExploding = false;
+        private float waitTime = 0.0f;
 
         public float rangeRadius = 10000000f;
         public Entity target;
 
-        public Circle explosionCirle = new Circle(50);
+        public Circle explosionCirle = new Circle(40);
 
         public float fuel;
 
-        public Missile(string spritePath, Ship parent) : base(spritePath)
+        Weapon Parent { get; set; }
+
+        public Missile( Weapon parent) : base("missile")
         {
+            Name = "Missile";
+            damage = 100;
+
             IsOnScreen = true;
 
-            spriteDepth = parent.spriteDepth + 0.01f;
+            Parent = parent;
+
+            spriteDepth = parent.spriteDepth + 0.0000001f;
 
             orientation = parent.orientation;
             
 
 
             velocity = parent.velocity;
-            fuel = 5f;
-            accelerationMagnitude = 950;
+            fuel = 15f;
+            accelerationMagnitude = 450;
             
 
             WorldPosition = parent.WorldPosition;
+            this.velocity = parent.ParentShip.velocity;
 
             TextureScale = new Vector2(2);
 
-            target = parent.target;
+            target = parent.ParentShip.target;
 
             deleteDelay = 1.0f;
         }
@@ -58,12 +70,26 @@ namespace Rockhoppers.scripts
                 TextureScale *= (1 + deltaTime);
             }
 
-
+            if (waitTime > 0)
+            {
+                waitTime -= deltaTime;
+                base.Update(gameTime);
+                return;
+            }
 
             if(fuel >= 0)
-            {            
+            {
 
-                EntityBehaviours.Intercept(this, target, gameTime);
+
+
+                if (Vector2.Distance(this.WorldPosition, target.WorldPosition) < explosionCirle.Radius * 50)
+                {
+                    EntityBehaviours.Intercept(this, target, gameTime);
+                }
+                else
+                {
+                    EntityBehaviours.FollowTarget(this, target, gameTime);
+                }
                 
                 fuel -= deltaTime;
 
@@ -88,16 +114,6 @@ namespace Rockhoppers.scripts
             WorldPosition += deltaPos;
 
 
-            if (Math.Abs(WorldPosition.X - SceneManager.camPos.X) < Game1.ScreenSize.X / 2 && Math.Abs(WorldPosition.Y - SceneManager.camPos.Y) < Game1.ScreenSize.X / 2)
-            {
-                IsOnScreen = true;
-                ScreenPosition = WorldPosition - SceneManager.camPos + Game1.ScreenSize / 2;
-            }
-            else
-            {
-                ScreenPosition = Game1.ScreenSize * 5;
-                IsOnScreen = false;
-            }
 
 
 
@@ -112,7 +128,7 @@ namespace Rockhoppers.scripts
                 return;
             }
 
-            if (Vector2.Distance(this.WorldPosition, target.WorldPosition) < explosionCirle.Radius)
+            if (Vector2.Distance(this.WorldPosition, target.WorldPosition) < explosionCirle.Radius && ! isExploding)
             {
                 Detonate();
             }
@@ -127,7 +143,7 @@ namespace Rockhoppers.scripts
 
             velocity += moment;
 
-            orientation = UtilityFunctions.GetAngleFromVector(velocity) + (float)Math.PI / 2;
+            orientation = UtilityFunctions.GetAngleFromVector(moment) + (float)Math.PI / 2;
         }
 
         public void Detonate()
@@ -138,6 +154,11 @@ namespace Rockhoppers.scripts
             SpritePath = "explosion";
             velocity = target.velocity;
             spriteDepth = 0.2f;
+
+            EntityBehaviours.DealDamage(this, (IDamageable)target);
+
+            Parent.ParentShip.NotifyHit(this.Name,damage);
+            
         }
 
         

@@ -10,7 +10,7 @@ namespace Rockhoppers.scripts
     {
         public static KeyboardState kbState;
 
-        private static MouseState mouseState;
+        public static MouseState mouseState;
         public static Vector2 mousePosition { get => new Vector2(mouseState.X, mouseState.Y);}
 
         

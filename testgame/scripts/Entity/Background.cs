@@ -6,7 +6,7 @@ namespace Rockhoppers.scripts
 {
     public class Background : Entity
     {
-        private bool is_wrapping;
+
 
         Rectangle viewRect { get => new Rectangle((int)ScreenPosition.X, (int)ScreenPosition.Y, (int)Game1.ScreenSize.X, (int)Game1.ScreenSize.Y); }
 
@@ -14,11 +14,10 @@ namespace Rockhoppers.scripts
 
         public Player parent_player = null;
 
-        public Background(bool isWrapping, string spritePath) : base(spritePath)
+        public Background( string spritePath) : base(spritePath)
         {
 
             IsOnScreen = true;
-            is_wrapping = isWrapping;
             spriteDepth = 0.99f;
             degree = 0.5f;
             TextureScale = new Vector2(4);

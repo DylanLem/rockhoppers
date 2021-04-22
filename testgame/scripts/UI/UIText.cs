@@ -23,7 +23,7 @@ namespace Rockhoppers.scripts
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            spriteDepth = 0.1f;
+            
  
             
 

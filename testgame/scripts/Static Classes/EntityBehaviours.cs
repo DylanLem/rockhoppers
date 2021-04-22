@@ -14,7 +14,7 @@ namespace Rockhoppers.scripts
                 return;
 
 
-            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+          
 
             Vector2 destination = target.WorldPosition;
 
@@ -119,6 +119,12 @@ namespace Rockhoppers.scripts
                 shooty.Boost(accelerationVector, gameTime);
 
             }
+        }
+
+        public static void DealDamage(IDamaging collider, IDamageable target)
+        {
+            target.TakeDamage(collider.Damage);
+
         }
     }
 }

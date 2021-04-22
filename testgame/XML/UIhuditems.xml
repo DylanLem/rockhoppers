@@ -30,9 +30,21 @@
       <scaling>2,2</scaling>           
     </child>
 
+    <child name="TargetDistance" type="text">
+      <font>fontMain</font>
+      <vector>0.55,0.5</vector>
+      <scaling>1,1</scaling>
+    </child>
+
     <child name="TargetVelocity" type="text">
       <font>fontMain</font>
-      <vector>0.55,-0.28</vector>
+      <vector>0.35,-0.28</vector>
+      <scaling>1,1</scaling>
+    </child>
+
+    <child name="TargetHealth" type="text">
+      <font>fontMain</font>
+      <vector>0,-0.18</vector>
       <scaling>1,1</scaling>
     </child>
       

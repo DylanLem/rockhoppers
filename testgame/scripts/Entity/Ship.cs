@@ -7,14 +7,21 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Rockhoppers.scripts
 {
-    public class Ship : Entity
+    public class Ship : Entity, IDamageable
     {
-        public int targetIndex = 0;
+        private float health;
+        public float Health { get => health; set => health = value; }
+
+        private bool isDestroyed;
+        public bool IsDestroyed { get => isDestroyed; set => isDestroyed = value; }
+
+        public int targetIndex = -1;
 
         //Delay in seconds
-        public float shotDelay = 5f;
+        public float shotDelay = 0.75f;
         public float shootTimer = 0.0f;
 
+        public Dictionary<string, Component> loadOut = new Dictionary<string, Component>();
 
 
         // Measured in steps of 10,000 game units of distance
@@ -26,12 +33,17 @@ namespace Rockhoppers.scripts
 
         public List<Ship> trackedShips = new List<Ship>();
         
+       
 
         public Ship(string spritePath) : base(spritePath)
         {
+            
+
             spriteDepth = 0.5f;
             accelerationMagnitude = 25f;
             TextureScale = new Vector2(4);
+
+            health = 100;
         }
 
 
@@ -41,28 +53,23 @@ namespace Rockhoppers.scripts
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+            if(!trackedShips.Contains((Ship)target))
+            {
+                target = null;
+            }
+
             if(! IsPlayer)
             {
                 target = SceneManager.players[0].playerEntity;
 
                 EntityBehaviours.FollowTarget(this, target, gameTime);
 
-                if (Math.Abs(WorldPosition.X - SceneManager.camPos.X) < Game1.ScreenSize.X / 2 && Math.Abs(WorldPosition.Y - SceneManager.camPos.Y) < Game1.ScreenSize.X / 2)
-                {
-                    IsOnScreen = true;
-                    ScreenPosition =  WorldPosition - SceneManager.camPos + Game1.ScreenSize/2;
-                }
-                else
-                {
-                    ScreenPosition = Game1.ScreenSize * 5;
-                    IsOnScreen = false;
-                }
             }
 
             
 
 
-            shootTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            shootTimer += deltaTime;
 
 
 
@@ -105,9 +112,10 @@ namespace Rockhoppers.scripts
             shootTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             Input.Update(gameTime);
 
-            
+            Vector2 moveDirection = Vector2.Zero;
 
-            Vector2 moveDirection = Input.GetMovementDirection();
+            if(Input.mouseState.LeftButton == ButtonState.Pressed)
+                 moveDirection = UtilityFunctions.GetVectorFromAngle(Input.GetMouseDirectionFromEntity(this));
 
 
             
@@ -132,7 +140,11 @@ namespace Rockhoppers.scripts
             {
                 case ("MISSILE"):
                     {
-                        Missile miss = new Missile("missile", this);
+                       if(this.loadOut.ContainsKey("Missile"))
+                        {
+                            Weapon missi = loadOut["Missile"] as Weapon;
+                            missi.Fire();
+                        }
                         break;
                     }
             }
@@ -173,7 +185,21 @@ namespace Rockhoppers.scripts
             
         }
 
+        public void InstallComponent(Component item)
+        {
+            if(item is Weapon)
+            {
+                Weapon weapy = item as Weapon;
 
+                this.loadOut[weapy.weaponType] = weapy;
+                weapy.SetParent(this);
+            }
+        }
+
+        public void NotifyHit(string ammo_name, float damage)
+        {
+            System.Diagnostics.Debug.WriteLine(ammo_name + " hit for " + damage);
+        }
         
     }
 }
