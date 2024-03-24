@@ -8,13 +8,13 @@ namespace Rockhoppers.scripts
 {
     public static class XMLParser
     {
-        public static string defaultPath = "C:/Users/Dilly/source/repos/testgame/testgame/XML/";
+        public static string defaultPath = System.IO.Directory.GetCurrentDirectory() + "\\..\\..\\..\\XML\\";
 
         public static UIElement LoadUIItem(string fileName, string objectName)
         {
             UIElement UIbase = new UIElement();
 
-            XmlTextReader reader = new XmlTextReader(defaultPath + fileName + ".xml");
+            XmlTextReader reader = new XmlTextReader(defaultPath + fileName + ".xml"); 
 
 
             while(! reader.EOF)
