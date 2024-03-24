@@ -13,7 +13,7 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin ../../../../../Pictures/arrow.png
+#begin arrow.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -23,9 +23,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/arrow.png;arrow.png
+/build:arrow.png
 
-#begin ../../../../../Pictures/bullet.png
+#begin bullet.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -35,9 +35,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/bullet.png;bullet.png
+/build:bullet.png
 
-#begin ../../../../../Pictures/buttonframe.png
+#begin buttonframe.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -47,9 +47,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/buttonframe.png;buttonframe.png
+/build:buttonframe.png
 
-#begin ../../../../../Pictures/buttonswitch.png
+#begin buttonswitch.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -59,9 +59,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/buttonswitch.png;buttonswitch.png
+/build:buttonswitch.png
 
-#begin ../../../../../Pictures/chassis_1.png
+#begin chassis_1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -71,9 +71,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/chassis_1.png;chassis_1.png
+/build:chassis_1.png
 
-#begin ../../../../../Pictures/compass.png
+#begin compass.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -83,9 +83,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/compass.png;compass.png
+/build:compass.png
 
-#begin ../../../../../Pictures/cursor.png
+#begin cursor.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -95,9 +95,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/cursor.png;cursor.png
+/build:cursor.png
 
-#begin ../../../../../Pictures/explosion.png
+#begin explosion.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -107,9 +107,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/explosion.png;explosion.png
+/build:explosion.png
 
-#begin ../../../../../Pictures/helpscreen.png
+#begin helpscreen.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -119,9 +119,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/helpscreen.png;helpscreen.png
+/build:helpscreen.png
 
-#begin ../../../../../Pictures/missile.png
+#begin missile.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -131,9 +131,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/missile.png;missile.png
+/build:missile.png
 
-#begin ../../../../../Pictures/radar.png
+#begin radar.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -143,9 +143,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/radar.png;radar.png
+/build:radar.png
 
-#begin ../../../../../Pictures/radarblip.png
+#begin radarblip.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -155,9 +155,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/radarblip.png;radarblip.png
+/build:radarblip.png
 
-#begin ../../../../../Pictures/radarframe.png
+#begin radarframe.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -167,9 +167,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/radarframe.png;radarframe.png
+/build:radarframe.png
 
-#begin ../../../../../Pictures/rocketlauncher.png
+#begin rocketlauncher.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -179,9 +179,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/rocketlauncher.png;rocketlauncher.png
+/build:rocketlauncher.png
 
-#begin ../../../../../Pictures/ship.png
+#begin ship.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -191,9 +191,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/ship.png;ship.png
+/build:ship.png
 
-#begin ../../../../../Pictures/ship2.png
+#begin ship2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -203,9 +203,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/ship2.png;ship2.png
+/build:ship2.png
 
-#begin ../../../../../Pictures/stars.png
+#begin stars.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -215,9 +215,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/stars.png;stars.png
+/build:stars.png
 
-#begin ../../../../../Pictures/uilight.png
+#begin uilight.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -227,9 +227,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/uilight.png;uilight.png
+/build:uilight.png
 
-#begin ../../../../../Pictures/uimissile.png
+#begin uimissile.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -239,9 +239,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/uimissile.png;uimissile.png
+/build:uimissile.png
 
-#begin ../../../../../Pictures/UIsaffronpurple.png
+#begin UIsaffronpurple.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -251,9 +251,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/UIsaffronpurple.png;UIsaffronpurple.png
+/build:UIsaffronpurple.png
 
-#begin ../../../../../Pictures/uistatus.png
+#begin uistatus.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -263,9 +263,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/uistatus.png;uistatus.png
+/build:uistatus.png
 
-#begin ../../../../../Pictures/uitracker.png
+#begin uitracker.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -275,7 +275,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../../Pictures/uitracker.png;uitracker.png
+/build:uitracker.png
 
 #begin fontMain.spritefont
 /importer:FontDescriptionImporter
